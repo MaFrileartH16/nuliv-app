@@ -3,8 +3,9 @@ name: EAS Build
 on:
   push:
     branches:
-      - main
+      - prod
       - dev
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,14 +16,13 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .nvmrc
+          node-version: 20
           cache: npm
-
-      - run: npm ci
 
       - uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - run: npx eas build --platform all --non-interactive --profile production
+      - run: npm ci
+      - run: npx eas build --non-interactive --profile production
