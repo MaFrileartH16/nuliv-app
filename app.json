@@ -35,14 +35,25 @@
       [
         "expo-build-properties",
         {
-          "ios": { "newArchEnabled": true },
-          "android": { "newArchEnabled": true }
+          "ios": {
+            "newArchEnabled": true
+          },
+          "android": {
+            "newArchEnabled": true
+          }
         }
       ],
       "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "f51ed487-cb4a-44bc-84dc-992d23f5ec45"
+      }
+    },
+    "owner": "mafrilearth"
   }
 }
