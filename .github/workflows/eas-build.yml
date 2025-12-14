@@ -6,20 +6,17 @@ on:
       - prod
       - dev
 
-concurrency:
-  group: eas-build-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
-          cache: "npm"
+          node-version: 20.19.6
+          cache: npm
 
       - uses: expo/expo-github-action@v8
         with:
@@ -29,10 +26,5 @@ jobs:
 
       - run: npm ci
 
-      - name: Build (prod -> production, dev -> preview)
-        run: |
-          if [ "${{ github.ref_name }}" = "prod" ]; then
-            eas build --platform all --profile production --non-interactive
-          else
-            eas build --platform all --profile preview --non-interactive
-          fi
+      - name: Build Android
+        run: npx eas build -p android --profile production --non-interactive
