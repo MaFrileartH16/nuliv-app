@@ -1,4 +1,4 @@
-name: EAS Build
+name: EAS Android Build
 
 on:
   push:
@@ -18,21 +18,17 @@ jobs:
           node-version: 20.19.6
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: 16.28.0
+          token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Install EAS CLI
-        run: npm install -g eas-cli
-
-      - name: Expo login
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: eas whoami
+      - run: npm ci
 
       - name: Build Android (prod)
-        if: github.ref_name == 'prod'
+        if: github.ref == 'refs/heads/prod'
         run: eas build -p android --profile production --non-interactive
 
       - name: Build Android (dev)
-        if: github.ref_name == 'dev'
+        if: github.ref == 'refs/heads/dev'
         run: eas build -p android --profile preview --non-interactive
