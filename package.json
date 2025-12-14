@@ -8,18 +8,13 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "lint:fix": "biome check . --apply",
     "format": "biome format . --write",
-
     "check:knip": "knip",
-    "test": "jest",
-    "test:watch": "jest --watch",
-
-    "prepare": "husky",
-    "commitlint": "commitlint --edit"
+    "test": "jest --watchAll",
+    "prepare": "husky"
   },
   "jest": {
     "preset": "jest-expo"
@@ -27,7 +22,9 @@
   "dependencies": {
     "@react-navigation/native": "^7.1.6",
     "@supabase/supabase-js": "^2.87.1",
-
+    "@tamagui/config": "^1.140.3",
+    "@tamagui/lucide-icons": "^1.140.3",
+    "@tamagui/toast": "^1.140.3",
     "expo": "~54.0.29",
     "expo-build-properties": "~1.0.10",
     "expo-constants": "~18.0.12",
@@ -39,7 +36,6 @@
     "expo-status-bar": "~3.0.9",
     "expo-system-ui": "~6.0.9",
     "expo-web-browser": "~15.0.10",
-
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
@@ -50,13 +46,7 @@
     "react-native-url-polyfill": "^3.0.0",
     "react-native-web": "^0.21.0",
     "react-native-worklets": "0.5.1",
-
     "tamagui": "^1.140.3",
-    "@tamagui/config": "^1.140.3",
-    "@tamagui/lucide-icons": "^1.140.3",
-    "@tamagui/toast": "^1.140.3",
-
-    "burnt": "^0.12.2",
     "zustand": "^5.0.9"
   },
   "devDependencies": {
@@ -65,27 +55,18 @@
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "@expo/metro-runtime": "~6.1.2",
-
     "@tamagui/babel-plugin": "^1.140.3",
     "@tamagui/cli": "^1.140.3",
     "@tamagui/metro-plugin": "^1.140.3",
-
     "@types/node": "^22.10.0",
     "@types/react": "~19.1.10",
-
     "babel-plugin-module-resolver": "^5.0.2",
     "husky": "^9.1.7",
     "knip": "^5.44.0",
     "lint-staged": "^15.2.10",
     "typescript": "~5.9.2"
   },
-  "overrides": {
-    "react-dom": "19.1.0"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md,yml,yaml}": ["biome check --apply --no-errors-on-unmatched"]
-  },
-  "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+  "engines": {
+    "node": ">=20.19.4"
   }
 }
