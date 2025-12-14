@@ -13,7 +13,7 @@
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
     "check:knip": "knip",
-    "test": "jest --runInBand",
+    "test": "jest --passWithNoTests",
     "prepare": "husky install"
   },
   "jest": {
