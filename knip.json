@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": ["app/**/*.{ts,tsx}", "src/**/*.{ts,tsx}"],
+  "project": ["**/*.{ts,tsx}"],
+  "ignore": ["node_modules/**", "dist/**", "web-build/**", ".expo/**"],
+  "ignoreDependencies": [],
+  "ignoreExportsUsedInFile": true,
+  "typescript": {
+    "config": "tsconfig.json"
+  }
+}
